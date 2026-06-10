@@ -1,0 +1,368 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Fish — Свежая рыба с доставкой</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a3c34;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d47a1, #0097a7);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #ffca28;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffca28;
+        }
+
+        .phone-header {
+            background: #ff6f00;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            transition: background 0.3s;
+        }
+        .phone-header:hover {
+            background: #e65100;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" fill="none"><rect width="1200" height="600" fill="%230d47a1"/><path d="M0 400 Q300 300 600 400 Q900 500 1200 400 L1200 600 L0 600 Z" fill="%23006a8e"/><path d="M0 450 Q300 380 600 460 Q900 520 1200 440 L1200 600 L0 600 Z" fill="%2300486b"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero h1 span {
+            color: #ffca28;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff6f00;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #e65100;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .catalog {
+            padding: 80px 0;
+            background: #f5f5f5;
+        }
+        .catalog h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #0d47a1;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+        .salmon { background: #ff8a80; }
+        .tuna { background: #90caf9; }
+        .shrimp { background: #ffcc80; }
+        .caviar { background: #ce93d8; }
+
+        .product-info {
+            padding: 20px;
+        }
+        .product-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 26px;
+            font-weight: 700;
+            color: #e65100;
+            margin-bottom: 15px;
+        }
+        .price small {
+            font-size: 14px;
+            color: #888;
+            font-weight: 400;
+        }
+
+        .btn-small {
+            display: block;
+            text-align: center;
+            background: #0d47a1;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn-small:hover {
+            background: #002171;
+        }
+
+        .advantages {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .advantages h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #0d47a1;
+        }
+        .adv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+        .adv-item {
+            padding: 30px 20px;
+        }
+        .adv-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+        .adv-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .contacts {
+            background: #0d47a1;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .contacts h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        .contacts p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .contacts .btn {
+            margin-top: 20px;
+        }
+
+        footer {
+            background: #001f3f;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            nav a {
+                margin-left: 10px;
+                font-size: 14px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo">🐟 Fresh<span>Fish</span></div>
+            <nav>
+                <a href="#catalog">Каталог</a>
+                <a href="#advantages">Почему мы</a>
+                <a href="#contacts">Контакты</a>
+                <a href="tel:+79001234567" class="phone-header">📞 Заказать</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Свежайшая рыба <span>с доставкой</span></h1>
+            <p>Прямой поставки из Мурманска и Дальнего Востока. Охлаждённая, заморозка, морепродукты — всё для вашего стола!</p>
+            <a href="#catalog" class="btn">Смотреть каталог 🐠</a>
+        </div>
+    </section>
+
+    <section class="catalog" id="catalog">
+        <div class="container">
+            <h2>Наш ассортимент</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-img salmon">🐟</div>
+                    <div class="product-info">
+                        <h3>Сёмга охлаждённая</h3>
+                        <div class="price">1 890 ₽ <small>/ кг</small></div>
+                        <a href="tel:+79001234567" class="btn-small">Заказать</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img tuna">🐠</div>
+                    <div class="product-info">
+                        <h3>Тунец свежемороженый</h3>
+                        <div class="price">2 450 ₽ <small>/ кг</small></div>
+                        <a href="tel:+79001234567" class="btn-small">Заказать</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img shrimp">🦐</div>
+                    <div class="product-info">
+                        <h3>Креветки королевские</h3>
+                        <div class="price">1 250 ₽ <small>/ кг</small></div>
+                        <a href="tel:+79001234567" class="btn-small">Заказать</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img caviar">🫧</div>
+                    <div class="product-info">
+                        <h3>Икра красная</h3>
+                        <div class="price">3 200 ₽ <small>/ 500 г</small></div>
+                        <a href="tel:+79001234567" class="btn-small">Заказать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages" id="advantages">
+        <div class="container">
+            <h2>Почему выбирают нас</h2>
+            <div class="adv-grid">
+                <div class="adv-item">
+                    <div class="adv-icon">🚚</div>
+                    <h4>Доставка за 2 часа</h4>
+                    <p>По городу — быстро и бережно, с сохранением температуры</p>
+                </div>
+                <div class="adv-item">
+                    <div class="adv-icon">❄️</div>
+                    <h4>Всегда свежее</h4>
+                    <p>Прямые поставки без посредников, рыба не лежит на складах</p>
+                </div>
+                <div class="adv-item">
+                    <div class="adv-icon">💰</div>
+                    <h4>Цены без накруток</h4>
+                    <p>Работаем напрямую с рыболовецкими хозяйствами</p>
+                </div>
+                <div class="adv-item">
+                    <div class="adv-icon">⭐</div>
+                    <h4>100% качество</h4>
+                    <p>Вся продукция проходит строгий контроль</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2>Закажите прямо сейчас</h2>
+            <p>📞 Телефон: <strong>+7 (900) 123-45-67</strong></p>
+            <p>📧 Почта: <strong>info@freshfish.ru</strong></p>
+            <p>🕐 Работаем: ежедневно с 8:00 до 22:00</p>
+            <p>📍 Доставка по городу и области</p>
+            <a href="tel:+79001234567" class="btn">Позвонить и заказать 🐟</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 FreshFish. Все права защищены. Свежая рыба каждый день!</p>
+    </footer>
+</body>
+</html>
+```
